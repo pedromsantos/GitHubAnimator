@@ -57,7 +57,7 @@
   <Import Project="$(FSharpTargetsPath)" />
   <ItemGroup>
     <None Include="App.config" />
-    <Compile Include="GitHubAnimator.fs" />
+    <Compile Include="Animator.fs" />
     <Compile Include="Program.fs" />
     <Content Include="packages.config" />
     <None Include="Scripts\load-references-debug.fsx" />
