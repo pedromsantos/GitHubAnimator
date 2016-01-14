@@ -180,10 +180,10 @@
             |> printfn "%s"
 
         [<Test>]
-        [<Ignore("To avoid hitting github API request limits")>]
+        //[<Ignore("To avoid hitting github API request limits")>]
         let ``Should save presentation``() =
             createClient
             |> createPresentation parameters
             |> savePresentation 
-                "C:\\src\\Katas\\August2015\\FSharpKatas\\reveal.js" 
-                "C:\\src\\Katas\\August2015\\FSharpKatas\\Presentation"
+                "C:\\src\GitHubAnimator\\reveal.js" 
+                "C:\\src\\GitHubAnimator\\Presentation"
