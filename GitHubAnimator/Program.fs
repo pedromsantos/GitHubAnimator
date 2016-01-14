@@ -28,6 +28,7 @@ module Program =
                             Owner = commandLineOptions.RepositoryOwner;
                             Repository = commandLineOptions.RepositoryName;
                             File =  commandLineOptions.File;
+                            Language =  "language-fsharp";
                             }
 
 

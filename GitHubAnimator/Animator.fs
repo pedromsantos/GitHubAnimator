@@ -6,7 +6,7 @@
         open System.IO
         open System.Net
         
-        type ChangesFor = {Owner:string; Repository:string; File:string}
+        type ChangesFor = {Owner:string; Repository:string; File:string; Language:string}
 
         let createClient = 
             let githubClient = new GitHubClient(
@@ -80,7 +80,7 @@
             |> List.rev
             |> List.map (fun change -> 
                             System.Environment.NewLine
-                            + "<section><pre><code class='language-fsharp' data-trim data-noescape>"
+                            + "<section><pre><code class='" + parameters.Language + "' data-trim data-noescape>"
                             + System.Environment.NewLine 
                             + change 
                             + System.Environment.NewLine
@@ -128,7 +128,7 @@
         open Animator
         open Octokit
 
-        let parameters = { Owner = "pedromsantos"; Repository = "FSharpKatas"; File="Bowling.fs" }
+        let parameters = { Owner = "pedromsantos"; Repository = "FSharpKatas"; File="Bowling.fs"; Language = "language-fsharp" }
 
         [<Test>]
         [<Ignore("To avoid hitting github API request limits")>]
