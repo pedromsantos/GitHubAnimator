@@ -1,6 +1,6 @@
 ﻿namespace GitHubAnimator
 
-module program =
+module Program =
 
     open Animator
 
