@@ -13,7 +13,7 @@ For the time being you need to make a few changes to the code if you want to use
 let parameters = { Owner = "pedromsantos"; Repository = "FSharpKatas"; File="Bowling.fs"; Language = "language-fsharp" }
 ```
 
-Note: Language should be one the the languages prism.js supports and should be in the format language-xxx [Prism languages](http://prismjs.com/#languages-list)
+Note: Language should be one the the languages prism.js supports and should be in the format 'language-xxx' [Prism languages](http://prismjs.com/#languages-list)
 
 Then go to the last integration test change the hardcoded paths, unignore it and finally execute that test manually. This should generate a Reveal.js presentation in the folder you specified.
 
