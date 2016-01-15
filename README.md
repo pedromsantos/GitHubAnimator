@@ -3,7 +3,7 @@ Generate Reveal.js slides from GitHub commits using F# and Octokit
 
 ## How Can I Use It?
 
-Start by grabbing the code to GitHubAnimator from [here](https://github.com/pedromsantos/GitHubAnimator)
+Start by grabbing the code to GitHubAnimator.
 
 You should be using a GitHub [Personal access token](https://github.com/settings/tokens). You can use the GitHubAPI as an anonymous user but the request limits are much lower. Make sure you copy the token. Then create an environment variable called 'githubtoken' and set the GitHubToken you got from GitHub as a value. Be careful with the personal access token since it is effectively a replacement for your username and password.
 
