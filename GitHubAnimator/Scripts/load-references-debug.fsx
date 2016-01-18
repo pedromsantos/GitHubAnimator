@@ -5,6 +5,3 @@
 #r "System.dll"
 #r "System.Net.Http.dll"
 #r "System.Numerics.dll"
-#r "../packages/NUnit.2.6.4/lib/nunit.framework.dll"
-#r "../packages/FsUnit.1.4.1.0/lib/net45/FsUnit.NUnit.dll"
-#r "../packages/FsUnit.1.4.1.0/lib/net45/NHamcrest.dll"
