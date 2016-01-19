@@ -14,7 +14,7 @@ module Program =
                                 Language:string;
                             }
 
-    let rec parseCommandLineRec (args:list<string>) optionsSoFar = 
+    let rec parseCommandLineRec args optionsSoFar = 
         match args with 
         | [] -> 
             optionsSoFar
@@ -39,7 +39,7 @@ module Program =
                let newOptions = { optionsSoFar with Language = tail.Head }
                parseCommandLineRec tail.Tail newOptions
             | unrecognizedArgument -> 
-               printf "Option '%s' is unrecognized" unrecognizedArgument
+               printf "Option '%s' is unrecognized\\n" unrecognizedArgument
                printf "usage: GitHubAnimator [-owner repositoryOwner] [-repository repositoryName] [-file fileName] [-templatepath revealTemplatePath] [-outputpath outputPath]"
                optionsSoFar 
 

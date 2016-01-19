@@ -4,6 +4,9 @@
         open NUnit.Framework
         open FsUnit
         open Program
+        open System
+        open System.IO
+        open System.Text
 
         let defaultOptions = { 
                                     RepositoryOwner = ""; 
@@ -61,3 +64,15 @@
 
             (parseCommandLineRec arguments defaultOptions).Language 
             |> should equal arguments.[1]
+
+        [<Test>]
+        let ``Should print error for invalid arguments``() =
+            let arguments = ["-InvalidFlag"; "irrelevant value"]
+
+            let output = new StringBuilder()
+            Console.SetOut(new StringWriter(output))
+
+            parseCommandLineRec arguments defaultOptions
+            |> ignore 
+            
+            output.ToString() |> should startWith "Option '-InvalidFlag' is unrecognized"
