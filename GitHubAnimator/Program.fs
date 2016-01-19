@@ -62,7 +62,7 @@ module Program =
                             Owner = options.RepositoryOwner;
                             Repository = options.RepositoryName;
                             File =  options.File;
-                            Language =  "language-fsharp";
+                            Language = options.Language;
                             }
 
 
