@@ -18,24 +18,24 @@ module Program =
         match args with 
         | [] -> 
             optionsSoFar
-        | arg::tail ->
-            match arg with
-            | "-Owner" | "-owner" ->
+        | (arg:string)::tail ->
+            match arg.ToLower() with
+            | "-owner" ->
                let newOptions = { optionsSoFar with RepositoryOwner = tail.Head }
                parseCommandLineRec tail.Tail newOptions
-            | "-Repository" | "-repository" ->
+            | "-repository" ->
                let newOptions = { optionsSoFar with RepositoryName = tail.Head }
                parseCommandLineRec tail.Tail newOptions
-            | "-File" | "-file" ->
+            | "-file" ->
                let newOptions = { optionsSoFar with File = tail.Head }
                parseCommandLineRec tail.Tail newOptions
-            | "-TemplatePath" | "-templatepath" ->
+            | "-templatepath" ->
                let newOptions = { optionsSoFar with RevealTemplatePath = tail.Head }
                parseCommandLineRec tail.Tail newOptions
-            | "-OutputPath" | "-outputpath" ->
+            | "-outputpath" ->
                let newOptions = { optionsSoFar with OutputPath = tail.Head }
                parseCommandLineRec tail.Tail newOptions
-            | "-Language" | "-language" ->
+            | "-language" ->
                let newOptions = { optionsSoFar with Language = tail.Head }
                parseCommandLineRec tail.Tail newOptions
             | unrecognizedArgument -> 
@@ -47,12 +47,12 @@ module Program =
     let main argv = 
 
         let defaultOptions = { 
-                                    RepositoryOwner = "pedromsantos"; 
-                                    RepositoryName = "FSharpKatas"; 
-                                    File = "Bowling.fs";
+                                    RepositoryOwner = ""; 
+                                    RepositoryName = ""; 
+                                    File = "";
                                     RevealTemplatePath = ".\\reveal.js";
                                     OutputPath = ".\\Presentation";
-                                    Language = "language-fsharp" 
+                                    Language = "" 
                                 }
 
         let args = argv |> List.ofArray

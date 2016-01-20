@@ -75,4 +75,4 @@
             parseCommandLineRec arguments defaultOptions
             |> ignore 
             
-            output.ToString() |> should startWith "Option '-InvalidFlag' is unrecognized"
+            output.ToString() |> should startWith "Option "
