@@ -17,40 +17,47 @@
                                     Language = ""; 
                                 }
 
-        [<Test>]
-        let ``Should parse owner from arguments``() =
-            let arguments = ["-Owner"; "pedromsantos"]
+        [<TestCase("-Owner", "someValue")>]
+        [<TestCase("-O", "otherValue")>]
+        let ``Should parse owner from arguments`` flag value =
+            let arguments = [flag; value]
 
 
             (parseCommandLineRec arguments defaultOptions).RepositoryOwner 
             |> should equal arguments.[1]
 
-        [<Test>]
-        let ``Should parse repository from arguments``() =
-            let arguments = ["-Repository"; "SomeRepository"]
+        [<TestCase("-Repository", "someValue")>]
+        [<TestCase("-R", "otherValue")>]
+        let ``Should parse repository from arguments`` flag value =
+            let arguments = [flag; value]
 
 
             (parseCommandLineRec arguments defaultOptions).RepositoryName 
             |> should equal arguments.[1]
 
-        [<Test>]
-        let ``Should parse file from arguments``() =
-            let arguments = ["-File"; "SomeFile.txt"]
+        [<TestCase("-File", "someValue")>]
+        [<TestCase("-F", "otherValue")>]
+        let ``Should parse file from arguments`` flag value =
+            let arguments = [flag; value]
 
 
             (parseCommandLineRec arguments defaultOptions).File 
             |> should equal arguments.[1]
 
         [<Test>]
-        let ``Should parse reveal template path from arguments``() =
-            let arguments = ["-TemplatePath"; ".\\Some\Path"]
+        [<TestCase("-TemplatePath", "someValue")>]
+        [<TestCase("-Template", "otherValue")>]
+        let ``Should parse reveal template path from arguments`` flag value =
+            let arguments = [flag; value]
 
 
             (parseCommandLineRec arguments defaultOptions).RevealTemplatePath 
             |> should equal arguments.[1]
 
         [<Test>]
-        let ``Should parse output path from arguments``() =
+        [<TestCase("-OutputPath", "someValue")>]
+        [<TestCase("-Out", "otherValue")>]
+        let ``Should parse output path from arguments`` flag value =
             let arguments = ["-OutputPath"; ".\\Some\Path"]
 
 
@@ -58,7 +65,9 @@
             |> should equal arguments.[1]
 
         [<Test>]
-        let ``Should parse language from arguments``() =
+        [<TestCase("-Language", "someValue")>]
+        [<TestCase("-L", "otherValue")>]
+        let ``Should parse language from arguments`` flag value =
             let arguments = ["-Language"; "language-xxx"]
 
 

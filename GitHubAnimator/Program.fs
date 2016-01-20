@@ -20,27 +20,27 @@ module Program =
             optionsSoFar
         | (arg:string)::tail ->
             match arg.ToLower() with
-            | "-owner" ->
+            | "-owner" | "-o" ->
                let newOptions = { optionsSoFar with RepositoryOwner = tail.Head }
                parseCommandLineRec tail.Tail newOptions
-            | "-repository" ->
+            | "-repository" | "-r" ->
                let newOptions = { optionsSoFar with RepositoryName = tail.Head }
                parseCommandLineRec tail.Tail newOptions
-            | "-file" ->
+            | "-file" | "-f"->
                let newOptions = { optionsSoFar with File = tail.Head }
                parseCommandLineRec tail.Tail newOptions
-            | "-templatepath" ->
+            | "-templatepath" | "-template" ->
                let newOptions = { optionsSoFar with RevealTemplatePath = tail.Head }
                parseCommandLineRec tail.Tail newOptions
-            | "-outputpath" ->
+            | "-outputpath" | "-out" ->
                let newOptions = { optionsSoFar with OutputPath = tail.Head }
                parseCommandLineRec tail.Tail newOptions
-            | "-language" ->
+            | "-language" | "-l" ->
                let newOptions = { optionsSoFar with Language = tail.Head }
                parseCommandLineRec tail.Tail newOptions
             | unrecognizedArgument -> 
                printf "Option '%s' is unrecognized\\n" unrecognizedArgument
-               printf "usage: GitHubAnimator [-owner repositoryOwner] [-repository repositoryName] [-file fileName] [-templatepath revealTemplatePath] [-outputpath outputPath]"
+               printf "usage: GitHubAnimator [-o[wner] repositoryOwner] [-r[epository] repositoryName] [-f[ile] fileName] [-out[putpath] outputPath] [-template[path] revealTemplatePath] [-l[anguage] language]"
                optionsSoFar 
 
     [<EntryPoint>]
