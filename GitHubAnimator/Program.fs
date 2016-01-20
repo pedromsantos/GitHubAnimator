@@ -1,7 +1,6 @@
 ﻿namespace GitHubAnimator
 
 module Program =
-
     open Animator
 
     type CommandLineOption = 
@@ -9,9 +8,9 @@ module Program =
                                 RepositoryOwner:string;
                                 RepositoryName:string;
                                 File:string;
+                                Language:string;
                                 RevealTemplatePath:string;
                                 OutputPath:string;
-                                Language:string;
                             }
 
     let rec parseCommandLineRec args optionsSoFar = 
@@ -43,31 +42,30 @@ module Program =
                printf "usage: GitHubAnimator [-o[wner] repositoryOwner] [-r[epository] repositoryName] [-f[ile] fileName] [-out[putpath] outputPath] [-template[path] revealTemplatePath] [-l[anguage] language]"
                optionsSoFar 
 
+    
+    let animatorParametersFromCommandLineOptions options =
+        {
+            Owner = options.RepositoryOwner;
+            Repository = options.RepositoryName;
+            File =  options.File;
+            Language = options.Language;
+         } 
+
     [<EntryPoint>]
     let main argv = 
-
-        let defaultOptions = { 
-                                    RepositoryOwner = ""; 
-                                    RepositoryName = ""; 
-                                    File = "";
-                                    RevealTemplatePath = ".\\reveal.js";
-                                    OutputPath = ".\\Presentation";
-                                    Language = "" 
-                                }
-
-        let args = argv |> List.ofArray
-        let options = parseCommandLineRec args defaultOptions
-
-        let parameters = {
-                            Owner = options.RepositoryOwner;
-                            Repository = options.RepositoryName;
-                            File =  options.File;
-                            Language = options.Language;
-                            }
-
+        let options =
+            { 
+                RepositoryOwner = ""; 
+                RepositoryName = ""; 
+                File = "";
+                Language = "";
+                RevealTemplatePath = ".\\reveal.js";
+                OutputPath = ".\\Presentation";
+            }
+            |> parseCommandLineRec (argv |> List.ofArray)
 
         createClient
-            |> createPresentation parameters
+            |> createPresentation (animatorParametersFromCommandLineOptions options)
             |> savePresentation 
                 options.RevealTemplatePath 
                 options.OutputPath
